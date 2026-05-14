@@ -13,10 +13,6 @@ app.use(express.json());
 // Serve frontend static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Root — serve the frontend
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
 
 // Routes
 app.use('/api/auth',     require('./routes/authRoutes'));
@@ -47,7 +43,7 @@ app.use((err, req, res, next) => {
   if (err.name === 'ValidationError') {
     return res.status(400).json({ error: err.message });
   }
-  
+
   res.status(err.status || 500).json({
     error: err.message || 'Internal Server Error',
   });
