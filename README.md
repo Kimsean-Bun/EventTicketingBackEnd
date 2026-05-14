@@ -49,7 +49,7 @@ Server runs at `http://localhost:3000`
 
 ## Deployed API
 
-> https://your-project-name.onrender.com
+> https://eventticketingbackend.onrender.com/
 
 ---
 
