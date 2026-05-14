@@ -20,22 +20,6 @@ app.use('/api/events',   require('./routes/eventRoutes'));
 app.use('/api/bookings', require('./routes/bookingRoutes'));
 app.use('/api/admin',    require('./routes/adminRoutes'));  // BONUS: admin dashboard
 
-// 404 middleware — must come after all routes
-app.use((req, res) => {
-  const acceptsHTML = req.headers['accept']?.includes('text/html');
-  if (acceptsHTML) {
-    res.status(404).send(`
-      <!DOCTYPE html>
-      <html>
-        <head><title>404 Not Found</title></head>
-        <body><h1>404 – Page Not Found</h1></body>
-      </html>
-    `);
-  } else {
-    res.status(404).json({ error: '404 Not Found' });
-  }
-});
-
 // Centralized error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
